@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実践演習 | 大学入試 小論文対策</title>
+    <meta name="description" content="徳島大学総合科学部の過去問で小論文の実践演習。PDF印刷して演習プリントとして活用できます。">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Practice page specific styles */
+        .practice-selector {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .practice-selector select {
+            padding: 12px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            min-width: 180px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5B73' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .practice-selector select:focus {
+            outline: none;
+            border-color: var(--accent-lavender);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        /* Exam display */
+        .exam-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .exam-header {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .exam-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .exam-header .exam-meta {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .exam-source {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--accent-lavender);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .exam-body {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+            line-height: 1.95;
+            font-size: 0.95rem;
+        }
+
+        .exam-body p {
+            margin-bottom: 14px;
+            text-indent: 1em;
+        }
+
+        .exam-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .exam-body .underline-text {
+            border-bottom: 2px solid var(--accent-peach);
+            padding-bottom: 1px;
+        }
+
+        .exam-questions {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 28px;
+            border: 2px solid var(--accent-mint);
+        }
+
+        .exam-questions h3 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--accent-dark);
+        }
+
+        .exam-question-item {
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .exam-question-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exam-question-item .q-num {
+            font-weight: 700;
+            color: var(--accent-dark);
+            display: inline-block;
+            margin-right: 8px;
+            min-width: 40px;
+        }
+
+        .exam-question-item .q-text {
+            line-height: 1.8;
+        }
+
+        /* Answer area for print */
+        .answer-area {
+            margin-bottom: 28px;
+            page-break-inside: avoid;
+        }
+
+        .answer-area h4 {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--accent-dark);
+        }
+
+        .answer-grid {
+            border: 1px solid #ccc;
+            min-height: 200px;
+            position: relative;
+            background: repeating-linear-gradient(transparent, transparent 39px, #e8e8e8 39px, #e8e8e8 40px);
+            background-size: 100% 40px;
+        }
+
+        .answer-grid-600 {
+            min-height: 480px;
+        }
+
+        .answer-grid-1000 {
+            min-height: 800px;
+        }
+
+        .char-count-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        /* Table in exam */
+        .exam-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.88rem;
+        }
+
+        .exam-table th,
+        .exam-table td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .exam-table th {
+            background: var(--bg-alt);
+            font-weight: 600;
+        }
+
+        /* Case study box */
+        .case-study-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .case-study-box h4 {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--accent-dark);
+        }
+
+        .case-study-box .cs-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .case-study-box .cs-body {
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+
+        /* No exam selected */
+        .no-exam {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+
+        .no-exam span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: #fff !important;
+                font-size: 10pt;
+            }
+
+            .header,
+            .footer,
+            .wave-divider,
+            .hero,
+            .practice-selector,
+            .btn-group,
+            .no-print,
+            .section--alt {
+                display: none !important;
+            }
+
+            .section {
+                padding: 0 !important;
+                background: #fff !important;
+            }
+
+            .exam-container {
+                max-width: 100%;
+            }
+
+            .exam-header,
+            .exam-source,
+            .exam-body,
+            .exam-questions,
+            .answer-area,
+            .case-study-box {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                margin-bottom: 16px;
+            }
+
+            .exam-header {
+                border: 2px solid #000;
+                padding: 16px;
+            }
+
+            .exam-body {
+                border: 1px solid #999;
+                padding: 20px;
+            }
+
+            .exam-body p {
+                margin-bottom: 10px;
+                line-height: 1.8;
+            }
+
+            .exam-questions {
+                border: 2px solid #000;
+                padding: 20px;
+            }
+
+            .answer-grid {
+                border: 1px solid #000;
+                background: repeating-linear-gradient(transparent, transparent 29px, #ddd 29px, #ddd 30px) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .answer-area {
+                page-break-inside: avoid;
+            }
+
+            .exam-body,
+            .exam-questions {
+                page-break-inside: auto;
+            }
+
+            a {
+                color: #000 !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">✏️ 小論文対策ナビ</a>
+            <nav class="header__nav">
+                <a href="index.html" class="header__link">トップ</a>
+                <a href="teacher.html" class="header__link">講師向け</a>
+                <a href="student.html" class="header__link">生徒向け</a>
+                <a href="practice.html" class="header__link header__link--active">実践演習</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero"
+        style="padding-top:130px;padding-bottom:60px;background:linear-gradient(160deg,#F5F0FA 0%,#E8E0F0 30%,#F0E8F5 60%,#FFF8F0 100%);">
+        <div class="container">
+            <span class="hero__badge">📄 実践演習</span>
+            <h1 class="hero__title">過去問で実践トレーニング</h1>
+            <p class="hero__subtitle">
+                徳島大学 総合科学部 後期日程の小論文過去問を掲載。<br>
+                演習プリントとしてPDF保存・印刷できます。
+            </p>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+                <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z"
+                    fill="var(--bg-primary)" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="section" id="practice-main">
+        <div class="container">
+            <!-- Selector -->
+            <div class="practice-selector no-print fade-in">
+                <select id="yearSelect">
+                    <option value="">年度を選択</option>
+                </select>
+                <select id="questionSelect" disabled>
+                    <option value="">大問を選択</option>
+                </select>
+            </div>
+            <div class="btn-group no-print fade-in">
+                <button class="btn btn--primary" id="btnDisplay" disabled>📖 問題を表示</button>
+                <button class="btn btn--secondary" id="btnPrint" disabled>🖨️ PDF / 印刷</button>
+                <button class="btn btn--secondary" id="btnPrintWithAnswer" disabled>📝 解答欄付きで印刷</button>
+            </div>
+
+            <!-- Exam Display Area -->
+            <div id="examDisplay" class="exam-container" style="margin-top:40px;">
+                <div class="no-exam no-print">
+                    <span>📚</span>
+                    <p>年度と大問を選んで「問題を表示」をクリックしてください</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer no-print">
+        <nav class="footer__links">
+            <a href="index.html" class="footer__link">トップページ</a>
+            <a href="teacher.html" class="footer__link">講師用 解説ガイド</a>
+            <a href="student.html" class="footer__link">生徒向け 対策ガイド</a>
+            <a href="practice.html" class="footer__link">実践演習</a>
+        </nav>
+        <p class="footer__copy">© 2026 大学入試 小論文対策ナビ</p>
+    </footer>
+
+    <script src="data/exams.js"></script>
+    <script src="data/exams2.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/practice.js"></script>
+</body>
+
+</html>

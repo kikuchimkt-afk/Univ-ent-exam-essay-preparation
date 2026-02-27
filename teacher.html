@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>講師用 解説ガイド | 大学入試 小論文対策</title>
+    <meta name="description" content="小論文指導の現場課題からアンケートデータ、4つの指導ステップ、5系統の出題テーマ解説、生成AI活用法まで。講師のための包括的な解説ガイドです。">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="header__logo">✏️ 小論文対策ナビ</a>
+            <nav class="header__nav">
+                <a href="index.html" class="header__link">トップ</a>
+                <a href="teacher.html" class="header__link header__link--active">講師向け</a>
+                <a href="student.html" class="header__link">生徒向け</a>
+                <a href="practice.html" class="header__link">実践演習</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero"
+        style="padding-top: 130px; background: linear-gradient(160deg, #F0ECF8 0%, #E8E0F0 30%, #D8E8F8 60%, #FFF8F0 100%);">
+        <div class="container">
+            <span class="hero__badge">📚 講師用ガイド</span>
+            <h1 class="hero__title">小論文指導の現場を<br>確かな力で支える</h1>
+            <p class="hero__subtitle">
+                生徒の課題を正しく捉え、思考を言語化するプロセスを支えるための<br>
+                指導ノウハウ・データ・ツール活用法をまとめました。
+            </p>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+                <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z"
+                    fill="var(--bg-primary)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Section 1: 指導の背景と課題 -->
+    <section class="section" id="challenges">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">指導の背景</span>
+                <h2 class="section__title">いま、小論文指導が求められる理由</h2>
+                <p class="section__subtitle">
+                    制度改正と年内入試の拡大により、小論文対策はすべての受験生にとって必須の時代に。<br>
+                    塾の現場では何が課題になっているのか、最新のデータから見ていきます。
+                </p>
+            </div>
+
+            <!-- Key Stats -->
+            <div class="stat-grid fade-in">
+                <div class="stat-card">
+                    <p class="stat-card__label">年内入試対策を実施した塾</p>
+                    <p class="stat-card__value stat-card__value--accent1" data-count="83.7" data-suffix="%">0%</p>
+                    <p class="stat-card__desc">在籍する高校生に対して年内入試の対策指導を行った塾の割合</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-card__label">小論文対策を実施した塾</p>
+                    <p class="stat-card__value stat-card__value--accent2" data-count="87.6" data-suffix="%">0%</p>
+                    <p class="stat-card__desc">年内入試対策を行った塾のうち、小論文対策を実施した割合</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-card__label">対象となる偏差値帯</p>
+                    <p class="stat-card__value stat-card__value--accent3">40〜55</p>
+                    <p class="stat-card__desc">中堅層の生徒にとっても小論文対策は避けて通れない時代に</p>
+                </div>
+            </div>
+
+            <!-- Callout -->
+            <div class="callout fade-in" style="margin-top: 40px;">
+                <p>
+                    <strong>2025年6月の文科省通知</strong>により、一般選抜開始前の個別テストでは小論文や面接を必ず組み合わせて評価することが明記されました。
+                    特に首都圏では学力検査を年内入試に導入する動きが加速しており、<strong>小論文の評価が合否を左右する場面</strong>がますます増えています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: アンケート結果 -->
+    <section class="section section--alt" id="survey">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">アンケートデータ</span>
+                <h2 class="section__title">生徒がつまずいているポイント</h2>
+                <p class="section__subtitle">
+                    エデュケーショナルネットワークの2025年12月調査より、小論文対策指導における生徒側の課題を可視化しました。
+                </p>
+            </div>
+
+            <!-- 高校生 Chart -->
+            <div class="card fade-in" style="margin-bottom: 32px;">
+                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">📊 小論文対策指導における生徒側の課題（高校生）</h3>
+                <div class="bar-chart">
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">小論文の基本的な書き方ができていない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--1" data-width="68%">68.0%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">語彙力や表現力が不足している</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--2" data-width="64.5%">64.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">論理的に文章を展開できない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--3" data-width="63.9%">63.9%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">出題テーマ・時事問題の知識が不十分</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--4" data-width="61.5%">61.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">文法など基本的な書き方が不十分</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--5" data-width="49.1%">49.1%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">練習量が足りていない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--6" data-width="38.5%">38.5%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中学生 Chart -->
+            <div class="card fade-in">
+                <h3 style="margin-bottom: 20px; font-size: 1.1rem;">📊 中学生の作文指導における生徒側の課題</h3>
+                <div class="bar-chart">
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">語彙力や表現力が不足している</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--1" data-width="80.2%">80.2%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">文章の組み立て方が理解できていない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--2" data-width="71%">71.0%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">書きたいことが浮かばない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--3" data-width="68.5%">68.5%</div>
+                        </div>
+                    </div>
+                    <div class="bar-chart__item">
+                        <span class="bar-chart__label">資料の要点が適切に読み取れない</span>
+                        <div class="bar-chart__track">
+                            <div class="bar-chart__fill bar-chart__fill--4" data-width="51.9%">51.9%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout--rose" style="margin-top: 20px;">
+                    <p>
+                        <strong>中3の入試対策段階の課題がそのまま高校の小論文対策にまで持ち越されている</strong>ことがデータから読み取れます。
+                        近年の公立高校入試では「復旧」「予兆」「典型」といった漢字の書き取り正答率が<strong>40%を下回る</strong>ケースも報告されています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: 小論文に必要な3つの力 -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">指導の核心</span>
+                <h2 class="section__title">小論文に必要な3つの力</h2>
+                <p class="section__subtitle">
+                    小論文は根拠に基づき論じる客観的視点が不可欠。<br>
+                    生徒が身につけるべき力を3つに整理しました。
+                </p>
+            </div>
+
+            <div class="powers-grid fade-in">
+                <div class="power-card">
+                    <span class="power-card__icon">🔍</span>
+                    <h3 class="power-card__title">読み取る力</h3>
+                    <p class="power-card__desc">問いや課題の意図を正確に読み取り、何が求められているかを的確に把握する力</p>
+                </div>
+                <div class="power-card">
+                    <span class="power-card__icon">⚖️</span>
+                    <h3 class="power-card__title">取捨選択する力</h3>
+                    <p class="power-card__desc">必要な情報を選び取り、論点に関係のない情報を切り捨てる判断力</p>
+                </div>
+                <div class="power-card">
+                    <span class="power-card__icon">🗣️</span>
+                    <h3 class="power-card__title">説明する力</h3>
+                    <p class="power-card__desc">考えを筋道立てて説明し、読み手が納得できる文章を構成する力</p>
+                </div>
+            </div>
+
+            <div class="callout callout--mint fade-in">
+                <p>
+                    <strong>指導の本質</strong>は「正しい文章の書き方」を教えることではありません。
+                    <strong>考えるプロセスを分解し、生徒の思考段階に応じて支えること</strong>が小論文指導の核心です。
+                    模範解答を教えるのではなく、設問の意図を読み取り、論点を整理し、生徒自身が思考を言語化できるよう導きましょう。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: 4つの指導ステップ -->
+    <section class="section section--alt" id="steps">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">実践メソッド</span>
+                <h2 class="section__title">小論文を書くための4つのステップ</h2>
+                <p class="section__subtitle">
+                    効果的な指導の流れとして、次のような段階を踏むことが有効です。
+                </p>
+            </div>
+
+            <div class="steps">
+                <div class="step fade-in-left">
+                    <div class="step__number step__number--1">1</div>
+                    <div class="step__content">
+                        <h4>設問を正確に読む</h4>
+                        <p>条件・立場・問いを確認する。「何を聞かれているのか」を生徒と一緒に整理しましょう。偏差値40〜50の生徒はこの段階でつまずきやすいため、丁寧な確認が必要です。</p>
+                    </div>
+                </div>
+
+                <div class="step fade-in-left">
+                    <div class="step__number step__number--2">2</div>
+                    <div class="step__content">
+                        <h4>論点を1つに絞る</h4>
+                        <p>何について答えるのかを明確にする。生徒に「自分はどの立場に立つのか」を問いかけ、論じるポイントを1つに定めさせましょう。</p>
+                    </div>
+                </div>
+
+                <div class="step fade-in-left">
+                    <div class="step__number step__number--3">3</div>
+                    <div class="step__content">
+                        <h4>理由を2つ程度挙げる</h4>
+                        <p>なぜそう考えるのかをわかりやすく書く。「なぜそう思うのか？」と繰り返し問いかけ、根拠を言語化する練習を重ねましょう。</p>
+                    </div>
+                </div>
+
+                <div class="step fade-in-left">
+                    <div class="step__number step__number--4">4</div>
+                    <div class="step__content">
+                        <h4>文章としてまとめる</h4>
+                        <p>結論→理由の順で構成する。「それらしい文章だが設問に答えていない」状態を避けるため、STEP1で確認した問いに常に立ち返ることが重要です。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout fade-in" style="margin-top: 40px;">
+                <p>
+                    <strong>注意点：</strong>苦手な生徒ほど「うまく書こう」「正しいことを書こう」と意識しすぎて文章が進まなくなります。
+                    得意な生徒は試行錯誤を厭わない一方、苦手な生徒には<strong>「正解を求めなくていい」</strong>と伝え、
+                    まずは思考を言葉にする体験を積ませることが大切です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: 5系統の出題テーマ解説 -->
+    <section class="section" id="themes">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">出題テーマ 5系統</span>
+                <h2 class="section__title">学部・学科別の出題テーマを押さえる</h2>
+                <p class="section__subtitle">
+                    各系統の頻出テーマ・キーワードと、2025年度の実際の出題例を確認できます。
+                </p>
+            </div>
+
+            <div class="accordion fade-in">
+                <!-- 生物・資源・環境系 -->
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <span class="accordion__icon">🌿</span>
+                        <span>系統① 生物・資源・環境系</span>
+                        <span class="accordion__arrow">▼</span>
+                    </button>
+                    <div class="accordion__body">
+                        <div class="accordion__content">
+                            <p><strong>サンプル問題：</strong>2025年度 宇都宮大学 農学部生物資源科学科 —
+                                日本の基幹的農業従事者の減少（240万人→116万人）と高齢化（平均年齢68.7歳）に対する、スマート農業技術以外の解決策を800字で論述。</p>
+                            <p>地方の少子高齢化や過疎化による労働力不足は、農業・林業・漁業・畜産業の持続可能性に直結します。技術革新だけでなく、協業や大規模化など多角的な視点が求められます。</p>
+
+                            <h4 style="margin: 16px 0 8px;">頻出キーワード</h4>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">環境破壊</span>
+                                <span class="keyword-tag">地球温暖化</span>
+                                <span class="keyword-tag">温室効果ガス</span>
+                                <span class="keyword-tag">炭素税</span>
+                                <span class="keyword-tag">レッドリスト</span>
+                                <span class="keyword-tag">再生可能エネルギー</span>
+                                <span class="keyword-tag">メタンハイドレート</span>
+                                <span class="keyword-tag">生物多様性</span>
+                                <span class="keyword-tag">原子力発電</span>
+                                <span class="keyword-tag">循環型社会</span>
+                                <span class="keyword-tag">4R</span>
+                            </div>
+
+                            <h4 style="margin: 20px 0 8px;">出題例（2025年度）</h4>
+                            <div class="uni-table-wrapper">
+                                <table class="uni-table">
+                                    <thead>
+                                        <tr>
+                                            <th>大学</th>
+                                            <th>学部・学科</th>
+                                            <th>入試種別</th>
+                                            <th>内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>岩手大学</td>
+                                            <td>農・動物科学・水産</td>
+                                            <td>学校推薦</td>
+                                            <td>畜産の現状とDNA情報を利用した改良についての考え</td>
+                                        </tr>
+                                        <tr>
+                                            <td>公立鳥取環境大学</td>
+                                            <td>環境</td>
+                                            <td>学校推薦</td>
+                                            <td>SDGs目標と太陽光パネル設置の文化破壊問題</td>
+                                        </tr>
+                                        <tr>
+                                            <td>県立広島大学</td>
+                                            <td>生物資源科学</td>
+                                            <td>学校推薦</td>
+                                            <td>海洋プラスチック問題の解決法</td>
+                                        </tr>
+                                        <tr>
+                                            <td>熊本県立大学</td>
+                                            <td>環境共生</td>
+                                            <td>学校推薦</td>
+                                            <td>持続可能な開発目標への自身の寄与</td>
+                                        </tr>
+                                        <tr>
+                                            <td>琉球大学</td>
+                                            <td>農・亜熱帯地域農</td>
+                                            <td>学校推薦</td>
+                                            <td>脱炭素社会実現のための森林活用</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 社会・教育系 -->
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <span class="accordion__icon">⚖️</span>
+                        <span>系統② 社会・教育系</span>
+                        <span class="accordion__arrow">▼</span>
+                    </button>
+                    <div class="accordion__body">
+                        <div class="accordion__content">
+                            <p><strong>サンプル問題：</strong>2025年度 福井大学 国際地域学部 —
+                                エネルギー問題。日本のCO₂排出量と実質GDPの推移データから、カーボンニュートラル実現に向けた方向性と課題を論述。統計・グラフから客観的エビデンスを読み取る力が問われます。
+                            </p>
+
+                            <h4 style="margin: 16px 0 8px;">重要キーワード</h4>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">教育格差（親ガチャ）</span>
+                                <span class="keyword-tag">いじめと不登校</span>
+                                <span class="keyword-tag">キャリア教育</span>
+                                <span class="keyword-tag">学校教育へのICT導入</span>
+                                <span class="keyword-tag">インバウンドと地方創生</span>
+                                <span class="keyword-tag">オーバーツーリズム</span>
+                                <span class="keyword-tag">物流人材不足</span>
+                                <span class="keyword-tag">ライドシェア</span>
+                                <span class="keyword-tag">エシカル消費</span>
+                                <span class="keyword-tag">シルバー民主主義</span>
+                                <span class="keyword-tag">ワークライフバランス</span>
+                                <span class="keyword-tag">ガラスの天井</span>
+                                <span class="keyword-tag">非正規雇用</span>
+                                <span class="keyword-tag">刑罰制度</span>
+                            </div>
+
+                            <h4 style="margin: 20px 0 8px;">出題例（2025年度）</h4>
+                            <div class="uni-table-wrapper">
+                                <table class="uni-table">
+                                    <thead>
+                                        <tr>
+                                            <th>大学</th>
+                                            <th>学部・学科</th>
+                                            <th>入試種別</th>
+                                            <th>内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>北海道大学</td>
+                                            <td>法</td>
+                                            <td>一般（後期）</td>
+                                            <td>シルバー民主主義の弊害と「一人一票」原則</td>
+                                        </tr>
+                                        <tr>
+                                            <td>東北大学</td>
+                                            <td>教育</td>
+                                            <td>総合</td>
+                                            <td>子どもの貧困と学校・教育者の役割</td>
+                                        </tr>
+                                        <tr>
+                                            <td>静岡大学</td>
+                                            <td>人文社会科・法</td>
+                                            <td>一般（前期）</td>
+                                            <td>高齢者の民主主義と若者世代の政治的影響力</td>
+                                        </tr>
+                                        <tr>
+                                            <td>大分大学</td>
+                                            <td>経済</td>
+                                            <td>学校推薦</td>
+                                            <td>ライドシェア導入の現状と地域への影響</td>
+                                        </tr>
+                                        <tr>
+                                            <td>琉球大学</td>
+                                            <td>国際地域創造</td>
+                                            <td>学校推薦</td>
+                                            <td>エシカル消費と食品ロス削減</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 理工・情報系 -->
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <span class="accordion__icon">💻</span>
+                        <span>系統③ 理工・情報系</span>
+                        <span class="accordion__arrow">▼</span>
+                    </button>
+                    <div class="accordion__body">
+                        <div class="accordion__content">
+                            <p><strong>サンプル問題：</strong>2023年度 筑波大学 理工学群社会工学類 —
+                                公共交通分担率と人口の相関係数を用いた分析問題。相関係数の理解と都市圏分類に基づくデータ読み取りが求められます。</p>
+
+                            <h4 style="margin: 16px 0 8px;">重要キーワード</h4>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">バイオテクノロジー</span>
+                                <span class="keyword-tag">iPS細胞</span>
+                                <span class="keyword-tag">環境技術</span>
+                                <span class="keyword-tag">科学者の倫理</span>
+                                <span class="keyword-tag">ビッグデータの活用</span>
+                                <span class="keyword-tag">ロボット技術</span>
+                                <span class="keyword-tag">遺伝子組み換え</span>
+                                <span class="keyword-tag">AI技術の活用</span>
+                                <span class="keyword-tag">デジタルデバイド</span>
+                                <span class="keyword-tag">個人情報流出</span>
+                            </div>
+
+                            <h4 style="margin: 20px 0 8px;">出題例</h4>
+                            <div class="uni-table-wrapper">
+                                <table class="uni-table">
+                                    <thead>
+                                        <tr>
+                                            <th>大学</th>
+                                            <th>学部・学科</th>
+                                            <th>入試種別</th>
+                                            <th>内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>会津大学</td>
+                                            <td>コンピュータ理工</td>
+                                            <td>学校推薦</td>
+                                            <td>技術進展と学校教育の内容改革</td>
+                                        </tr>
+                                        <tr>
+                                            <td>群馬大学</td>
+                                            <td>情報</td>
+                                            <td>一般（後期）</td>
+                                            <td>AIと心を持つAIの倫理</td>
+                                        </tr>
+                                        <tr>
+                                            <td>宇都宮大学</td>
+                                            <td>工・基盤工</td>
+                                            <td>一般（後期）</td>
+                                            <td>交通・輸送を支える科学・技術</td>
+                                        </tr>
+                                        <tr>
+                                            <td>関南公立大学</td>
+                                            <td>情報科</td>
+                                            <td>学校推薦</td>
+                                            <td>ビッグデータ・IoTの活用</td>
+                                        </tr>
+                                        <tr>
+                                            <td>大分大学</td>
+                                            <td>理工・建築学</td>
+                                            <td>学校推薦</td>
+                                            <td>低炭素化に貢献する建築技術</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人文・国際系 -->
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <span class="accordion__icon">🌏</span>
+                        <span>系統④ 人文・国際系</span>
+                        <span class="accordion__arrow">▼</span>
+                    </button>
+                    <div class="accordion__body">
+                        <div class="accordion__content">
+                            <p><strong>サンプル問題：</strong>2025年度 お茶の水女子大学 文教育学部 —
+                                課題文を読み「人間にしかできないこと」を1000字以内で論述。生成AIの進化により、人間のもつ能力や価値観が根底から問われるテーマです。</p>
+
+                            <h4 style="margin: 16px 0 8px;">重要キーワード</h4>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">AIの可能性と限界</span>
+                                <span class="keyword-tag">フィルターバブル</span>
+                                <span class="keyword-tag">言語と文化</span>
+                                <span class="keyword-tag">グローバリゼーション</span>
+                                <span class="keyword-tag">クールジャパンとポップカルチャー</span>
+                                <span class="keyword-tag">日本語の乱れ</span>
+                                <span class="keyword-tag">ダイバーシティ</span>
+                                <span class="keyword-tag">異文化理解</span>
+                            </div>
+
+                            <h4 style="margin: 20px 0 8px;">出題例（2025年度）</h4>
+                            <div class="uni-table-wrapper">
+                                <table class="uni-table">
+                                    <thead>
+                                        <tr>
+                                            <th>大学</th>
+                                            <th>学部・学科</th>
+                                            <th>入試種別</th>
+                                            <th>内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>北海道大学</td>
+                                            <td>文</td>
+                                            <td>一般（後期）</td>
+                                            <td>家事労働者の労働環境改善</td>
+                                        </tr>
+                                        <tr>
+                                            <td>弘前大学</td>
+                                            <td>人文社会科・文化創生</td>
+                                            <td>一般（後期）</td>
+                                            <td>日本の高齢化と将来の社会的課題</td>
+                                        </tr>
+                                        <tr>
+                                            <td>宇都宮大学</td>
+                                            <td>国際</td>
+                                            <td>一般（前期）</td>
+                                            <td>アイデンティティ・言語・文化</td>
+                                        </tr>
+                                        <tr>
+                                            <td>尾道市立大学</td>
+                                            <td>芸術文化・日本文</td>
+                                            <td>学校推薦</td>
+                                            <td>AI vs 人間の短歌表現力</td>
+                                        </tr>
+                                        <tr>
+                                            <td>北九州市立大学</td>
+                                            <td>外国語・英米</td>
+                                            <td>一般（後期）</td>
+                                            <td>訪日外国人増加と観光課題</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 医療・看護系 -->
+                <div class="accordion__item">
+                    <button class="accordion__header">
+                        <span class="accordion__icon">🏥</span>
+                        <span>系統⑤ 医療・看護系</span>
+                        <span class="accordion__arrow">▼</span>
+                    </button>
+                    <div class="accordion__body">
+                        <div class="accordion__content">
+                            <p><strong>サンプル問題：</strong>2025年度 東京科学大学 医学部医学科 —
+                                インフォームドコンセントについて。患者や家族が医療上の選択をすることの欠点（400字）と、医師として説明する際の留意点（300字）を論述。</p>
+
+                            <h4 style="margin: 16px 0 8px;">重要キーワード</h4>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">インフォームドコンセント</span>
+                                <span class="keyword-tag">臓器移植</span>
+                                <span class="keyword-tag">終末期医療</span>
+                                <span class="keyword-tag">チーム医療</span>
+                                <span class="keyword-tag">出生前診断</span>
+                                <span class="keyword-tag">地域医療の持続可能性</span>
+                                <span class="keyword-tag">高齢者医療の課題</span>
+                                <span class="keyword-tag">患者への接し方</span>
+                            </div>
+
+                            <h4 style="margin: 20px 0 8px;">出題例（2025年度）</h4>
+                            <div class="uni-table-wrapper">
+                                <table class="uni-table">
+                                    <thead>
+                                        <tr>
+                                            <th>大学</th>
+                                            <th>学部・学科</th>
+                                            <th>入試種別</th>
+                                            <th>内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>山梨大学</td>
+                                            <td>医・看護</td>
+                                            <td>学校推薦</td>
+                                            <td>読書量の調査結果と読書の特徴</td>
+                                        </tr>
+                                        <tr>
+                                            <td>三重大学</td>
+                                            <td>医・医</td>
+                                            <td>一般（後期）</td>
+                                            <td>医師の患者への過度な共感・感情移入</td>
+                                        </tr>
+                                        <tr>
+                                            <td>大阪大学</td>
+                                            <td>薬</td>
+                                            <td>一般（前期）</td>
+                                            <td>生命維持治療・人工呼吸器の取り外し</td>
+                                        </tr>
+                                        <tr>
+                                            <td>下関市立大学</td>
+                                            <td>看護</td>
+                                            <td>学校推薦</td>
+                                            <td>労働力人口と女性の就業課題</td>
+                                        </tr>
+                                        <tr>
+                                            <td>高知県立大学</td>
+                                            <td>健康栄養</td>
+                                            <td>学校推薦</td>
+                                            <td>平均歩数・睡眠時間と運動習慣</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: 生成AI活用 -->
+    <section class="section section--alt" id="ai">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <span class="section__label">コラム</span>
+                <h2 class="section__title">小論文指導における生成AIの活用</h2>
+                <p class="section__subtitle">
+                    「使うかどうか」より「どう使うか」。<br>
+                    生成AIを補助ツールとして上手に活用し、指導の質を高めましょう。
+                </p>
+            </div>
+
+            <!-- メリット -->
+            <div class="card fade-in" style="margin-bottom: 32px;">
+                <h3 style="margin-bottom: 16px;">✨ 生成AIを指導に活用するメリット</h3>
+                <ul style="display: flex; flex-direction: column; gap: 12px;">
+                    <li
+                        style="padding-left: 24px; position: relative; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+                        <span style="position: absolute; left: 0;">✅</span>
+                        論点のずれ・主張と根拠の不一致・論理の飛躍など、設定した観点で<strong>網羅的にチェック</strong>できる
+                    </li>
+                    <li
+                        style="padding-left: 24px; position: relative; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+                        <span style="position: absolute; left: 0;">✅</span>
+                        添削コメントの<strong>「たたき台」を短時間で作成</strong>でき、講師が答案と向き合う時間を確保しやすくなる
+                    </li>
+                    <li
+                        style="padding-left: 24px; position: relative; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+                        <span style="position: absolute; left: 0;">✅</span>
+                        複数講師間で<strong>添削の観点を共有</strong>しやすくなり、指導のばらつきを抑えられる
+                    </li>
+                    <li
+                        style="padding-left: 24px; position: relative; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+                        <span style="position: absolute; left: 0;">✅</span>
+                        誤字・脱字だけでなく、<strong>内容面の課題や改善点</strong>を洗い出しやすくなる
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 得意 vs 不得意 -->
+            <div class="ai-compare fade-in">
+                <div class="ai-card ai-card--good">
+                    <h3 class="ai-card__title">✅ 生成AIが得意なこと</h3>
+                    <ul class="ai-card__list">
+                        <li>論点のずれ・主張と根拠の不一致を網羅的にチェック</li>
+                        <li>設定した複数の観点で偏りなく内容を確認</li>
+                        <li>添削コメントのたたき台を素早く作成</li>
+                        <li>誤字・脱字・文章表現の修正</li>
+                    </ul>
+                </div>
+
+                <div class="ai-card ai-card--bad">
+                    <h3 class="ai-card__title">⚠️ 生成AIが不得意なこと</h3>
+                    <ul class="ai-card__list">
+                        <li>設問意図の解説や大学ごとの評価軸の説明</li>
+                        <li>論点設定や生徒の思考過程に寄り添った指導</li>
+                        <li>大学・学部・設問の特性に応じた具体的な指摘</li>
+                        <li>毎回一貫した視点・論調での回答（軸がブレやすい）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout callout--rose fade-in" style="margin-top: 32px;">
+                <p>
+                    <strong>重要：</strong>AIの指摘をそのまま生徒に返すのではなく、「なぜその指摘になるのか」を<strong>講師自身の言葉で説明できること</strong>が不可欠です。
+                    また、ChatGPTやGeminiなどの汎用型AIは回答の軸がブレやすいため、<strong>小論文指導に特化した評価軸を持つAI</strong>を活用することで弱点を補うことができます。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+        <div class="container" style="text-align: center;">
+            <div class="fade-in">
+                <h2 class="section__title">生徒向けガイドも用意しています</h2>
+                <p class="section__subtitle">生徒に直接共有できる対策ガイドもご活用ください。</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="student.html" class="btn btn--secondary">🎓 生徒向けガイドを見る</a>
+                    <a href="index.html" class="btn btn--primary">🏠 トップページへ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <nav class="footer__links">
+            <a href="index.html" class="footer__link">トップページ</a>
+            <a href="teacher.html" class="footer__link">講師用 解説ガイド</a>
+            <a href="student.html" class="footer__link">生徒向け 対策ガイド</a>
+        </nav>
+        <p class="footer__copy">© 2026 大学入試 小論文対策ナビ</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
