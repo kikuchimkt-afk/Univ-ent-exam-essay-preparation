@@ -140,20 +140,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         html += `</div>`;
 
-        // Answer areas
+        // Answer areas (横書き原稿用紙)
         if (withAnswerArea) {
             exam.questions.forEach(q => {
-                const charMatch = q.text.match(/(\d+)字/);
-                let height = 'answer-grid';
-                if (charMatch) {
-                    const chars = parseInt(charMatch[0]);
-                    if (chars >= 800) height += ' answer-grid-1000';
-                    else if (chars >= 400) height += ' answer-grid-600';
+                // 字数制限を解析
+                const charMatches = q.text.match(/(\d+)字/g);
+                let maxChars = 200; // デフォルト
+                let charLabel = '';
+                if (charMatches) {
+                    const nums = charMatches.map(m => parseInt(m));
+                    maxChars = Math.max(...nums);
+                    // 字数制限の表現を取得
+                    const rangeMatch = q.text.match(/(\d+)字以上(\d+)字以内/);
+                    const withinMatch = q.text.match(/(\d+)字以内/);
+                    const rangeMatch2 = q.text.match(/(\d+)～(\d+)字/);
+                    if (rangeMatch) charLabel = `${rangeMatch[1]}字以上${rangeMatch[2]}字以内`;
+                    else if (rangeMatch2) charLabel = `${rangeMatch2[1]}～${rangeMatch2[2]}字`;
+                    else if (withinMatch) charLabel = `${withinMatch[1]}字以内`;
+                    else charLabel = `${maxChars}字`;
                 }
+                const colsPerRow = 20;
+                const totalRows = Math.ceil(maxChars / colsPerRow);
+
                 html += `<div class="answer-area">
-          <h4>✍️ ${q.num} 解答欄</h4>
-          <div class="${height}"></div>
-          ${charMatch ? `<div class="char-count-label">${charMatch[0]}以内</div>` : ''}
+          <div class="answer-area-header">
+            <h4>✍️ ${q.num} 解答欄</h4>
+            ${charLabel ? `<span class="answer-char-info">📏 ${charLabel}</span>` : ''}
+          </div>
+          ${buildManuscriptPaper(colsPerRow, totalRows)}
+          <div class="ms-total-label">${colsPerRow}字 × ${totalRows}行 ＝ ${colsPerRow * totalRows}字</div>
         </div>`;
             });
         }
@@ -241,6 +256,42 @@ document.addEventListener('DOMContentLoaded', function () {
             html += `</div>`; // .guide-section end
         });
 
+        return html;
+    }
+
+    // 横書き原稿用紙を生成する関数
+    function buildManuscriptPaper(cols, rows) {
+        let html = '<div class="manuscript-paper">';
+
+        // Column header (1, 2, 3, ... 20)
+        html += '<div class="ms-col-header"><div class="ms-row-label"></div>';
+        for (let c = 1; c <= cols; c++) {
+            let cls = 'ms-col-num';
+            if (c % 10 === 0) cls += ' ms-col-10';
+            else if (c % 5 === 0) cls += ' ms-col-5';
+            html += `<div class="${cls}">${c}</div>`;
+        }
+        html += '</div>';
+
+        // Rows
+        for (let r = 1; r <= rows; r++) {
+            const cumulative = r * cols;
+            let rowCls = 'ms-row';
+            if (r % 10 === 0) rowCls += ' ms-row-10';
+            else if (r % 5 === 0) rowCls += ' ms-row-5';
+
+            html += `<div class="${rowCls}">`;
+            html += `<div class="ms-row-label">${cumulative}</div>`;
+            for (let c = 1; c <= cols; c++) {
+                let cellCls = 'ms-cell';
+                if (c % 10 === 0) cellCls += ' ms-cell-10';
+                else if (c % 5 === 0) cellCls += ' ms-cell-5';
+                html += `<div class="${cellCls}"></div>`;
+            }
+            html += '</div>';
+        }
+
+        html += '</div>';
         return html;
     }
 

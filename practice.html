@@ -145,39 +145,194 @@
             line-height: 1.8;
         }
 
-        /* Answer area for print */
+        /* ===== 横書き原稿用紙 ===== */
         .answer-area {
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             page-break-inside: avoid;
         }
 
-        .answer-area h4 {
-            margin-bottom: 12px;
+        .answer-area-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .answer-area-header h4 {
             font-size: 1rem;
             color: var(--accent-dark);
+            margin: 0;
         }
 
-        .answer-grid {
-            border: 1px solid #ccc;
-            min-height: 200px;
-            position: relative;
-            background: repeating-linear-gradient(transparent, transparent 39px, #e8e8e8 39px, #e8e8e8 40px);
-            background-size: 100% 40px;
-        }
-
-        .answer-grid-600 {
-            min-height: 480px;
-        }
-
-        .answer-grid-1000 {
-            min-height: 800px;
-        }
-
-        .char-count-label {
-            font-size: 0.8rem;
+        .answer-char-info {
+            font-size: 0.85rem;
             color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .manuscript-paper {
+            border: 2px solid #888;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Column number header (5, 10, 15, 20) */
+        .ms-col-header {
+            display: flex;
+            border-bottom: 2px solid #888;
+            background: #f5f5f0;
+            user-select: none;
+        }
+
+        .ms-col-header .ms-row-label {
+            width: 36px;
+            min-width: 36px;
+            border-right: 1px solid #aaa;
+        }
+
+        .ms-col-header .ms-col-num {
+            flex: 1;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #888;
+            padding: 3px 0;
+            border-right: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .ms-col-header .ms-col-num.ms-col-5 {
+            border-right: 1px solid #aaa;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .ms-col-header .ms-col-num.ms-col-10 {
+            border-right: 2px solid #888;
+            color: #555;
+            font-weight: 700;
+        }
+
+        .ms-col-header .ms-col-num:last-child {
+            border-right: none;
+        }
+
+        /* Each row */
+        .ms-row {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ms-row:last-child {
+            border-bottom: none;
+        }
+
+        .ms-row.ms-row-5 {
+            border-bottom: 1px solid #aaa;
+        }
+
+        .ms-row.ms-row-10 {
+            border-bottom: 2px solid #888;
+        }
+
+        /* Row label (行番号 / 累計字数) */
+        .ms-row-label {
+            width: 36px;
+            min-width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: #999;
+            background: #f9f9f5;
+            border-right: 2px solid #888;
+            user-select: none;
+        }
+
+        .ms-row.ms-row-5 .ms-row-label,
+        .ms-row.ms-row-10 .ms-row-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Individual cell */
+        .ms-cell {
+            flex: 1;
+            height: 32px;
+            border-right: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .ms-cell:last-child {
+            border-right: none;
+        }
+
+        .ms-cell.ms-cell-5 {
+            border-right: 1px solid #aaa;
+        }
+
+        .ms-cell.ms-cell-10 {
+            border-right: 2px solid #888;
+        }
+
+        .ms-total-label {
             text-align: right;
-            margin-top: 4px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        @media print {
+            .manuscript-paper {
+                border: 1.5px solid #333;
+            }
+
+            .ms-col-header {
+                border-bottom: 1.5px solid #333;
+            }
+
+            .ms-row-label {
+                border-right: 1.5px solid #333;
+                font-size: 0.6rem;
+            }
+
+            .ms-cell {
+                height: 28px;
+                border-right-color: #bbb;
+            }
+
+            .ms-cell.ms-cell-5 {
+                border-right-color: #888;
+            }
+
+            .ms-cell.ms-cell-10 {
+                border-right: 1.5px solid #333;
+            }
+
+            .ms-row {
+                border-bottom-color: #bbb;
+            }
+
+            .ms-row.ms-row-5 {
+                border-bottom-color: #888;
+            }
+
+            .ms-row.ms-row-10 {
+                border-bottom: 1.5px solid #333;
+            }
+
+            .ms-col-header .ms-col-num {
+                border-right-color: #bbb;
+            }
+
+            .ms-col-header .ms-col-num.ms-col-5 {
+                border-right-color: #888;
+            }
+
+            .ms-col-header .ms-col-num.ms-col-10 {
+                border-right: 1.5px solid #333;
+            }
         }
 
         /* Table in exam */
