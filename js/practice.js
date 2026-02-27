@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnDisplay = document.getElementById('btnDisplay');
     const btnPrint = document.getElementById('btnPrint');
     const btnPrintWithAnswer = document.getElementById('btnPrintWithAnswer');
+    const btnShowGuide = document.getElementById('btnShowGuide');
     const examDisplay = document.getElementById('examDisplay');
 
     if (!yearSelect || typeof EXAM_DATA === 'undefined') return;
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btnDisplay.disabled = true;
         btnPrint.disabled = true;
         btnPrintWithAnswer.disabled = true;
+        if (btnShowGuide) btnShowGuide.disabled = true;
         if (!this.value) return;
         const filtered = EXAM_DATA.filter(e => e.year === this.value);
         filtered.forEach(e => {
@@ -34,16 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     questionSelect.addEventListener('change', function () {
-        btnDisplay.disabled = !this.value;
-        btnPrint.disabled = !this.value;
-        btnPrintWithAnswer.disabled = !this.value;
+        const hasValue = !!this.value;
+        btnDisplay.disabled = !hasValue;
+        btnPrint.disabled = !hasValue;
+        btnPrintWithAnswer.disabled = !hasValue;
+        if (btnShowGuide) {
+            // Enable only if answer data exists
+            const hasGuide = hasValue && typeof ANSWER_DATA !== 'undefined' && ANSWER_DATA[this.value];
+            btnShowGuide.disabled = !hasGuide;
+        }
     });
 
-    btnDisplay.addEventListener('click', () => renderExam(false));
-    btnPrint.addEventListener('click', () => { renderExam(false); setTimeout(() => window.print(), 300); });
-    btnPrintWithAnswer.addEventListener('click', () => { renderExam(true); setTimeout(() => window.print(), 300); });
+    btnDisplay.addEventListener('click', () => renderExam(false, false));
+    btnPrint.addEventListener('click', () => { renderExam(false, false); setTimeout(() => window.print(), 300); });
+    btnPrintWithAnswer.addEventListener('click', () => { renderExam(true, false); setTimeout(() => window.print(), 300); });
+    if (btnShowGuide) {
+        btnShowGuide.addEventListener('click', () => renderExam(false, true));
+    }
 
-    function renderExam(withAnswerArea) {
+    function renderExam(withAnswerArea, withGuide) {
         const exam = EXAM_DATA.find(e => e.id === questionSelect.value);
         if (!exam) return;
         let html = '';
@@ -77,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Body text
         html += `<div class="exam-body"><h3 style="margin-bottom:16px;font-size:1rem;">【課題文】</h3>`;
         exam.body.forEach(p => {
-            // Handle underline markup
             let text = escapeHtml(p);
             if (exam.questions) {
                 exam.questions.forEach(q => {
@@ -148,8 +158,90 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // Guide & Model Answers
+        if (withGuide && typeof ANSWER_DATA !== 'undefined' && ANSWER_DATA[exam.id]) {
+            const ansData = ANSWER_DATA[exam.id];
+            html += renderGuideSection(ansData, exam);
+        }
+
         examDisplay.innerHTML = html;
         examDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderGuideSection(ansData, exam) {
+        let html = '';
+
+        // Theme info banner
+        html += `<div class="guide-theme-banner">
+      <div class="guide-theme-category">
+        <span class="guide-theme-icon">📋</span>
+        <span>テーマ系統：<strong>${ansData.themeCategory}</strong></span>
+      </div>
+      <div class="guide-theme-keywords">
+        ${ansData.themeKeywords.map(k => `<span class="guide-keyword">${k}</span>`).join('')}
+      </div>
+    </div>`;
+
+        // Each question's guide
+        ansData.answers.forEach(ans => {
+            html += `<div class="guide-section">`;
+
+            // Section header
+            html += `<div class="guide-section-header">
+        <h3>📝 ${ans.qNum}：模範解答と指導マニュアル</h3>
+        <div class="guide-meta">
+          <span class="guide-type-badge">${ans.type}</span>
+          <span class="guide-char-badge">${ans.charLimit}</span>
+        </div>
+      </div>`;
+
+            // Model answer
+            html += `<div class="guide-model-answer">
+        <h4><span class="guide-icon">✅</span> 模範解答（${ans.charCount}字）</h4>
+        <div class="guide-answer-text">${escapeHtml(ans.model).replace(/\n/g, '<br>')}</div>
+      </div>`;
+
+            // 4 Steps guide
+            const steps = [ans.guide.step1_read, ans.guide.step2_focus, ans.guide.step3_reasons, ans.guide.step4_write];
+            const stepColors = ['#7C6BC4', '#5B9BD5', '#70AD47', '#ED7D31'];
+            const stepIcons = ['📖', '🎯', '💡', '✏️'];
+
+            html += `<div class="guide-steps-container">
+        <h4 class="guide-steps-title">📚 小論文4ステップ指導法</h4>`;
+
+            steps.forEach((step, i) => {
+                html += `<div class="guide-step" style="border-left-color:${stepColors[i]}">
+          <div class="guide-step-header" style="color:${stepColors[i]}">
+            <span class="guide-step-icon">${stepIcons[i]}</span>
+            <span>${step.title}</span>
+          </div>
+          <ul class="guide-step-points">
+            ${step.points.map(p => `<li>${escapeHtml(p)}</li>`).join('')}
+          </ul>
+        </div>`;
+            });
+            html += `</div>`;
+
+            // Common mistakes
+            html += `<div class="guide-mistakes">
+        <h4><span class="guide-icon">⚠️</span> よくある間違い</h4>
+        <ul class="guide-mistake-list">
+          ${ans.guide.commonMistakes.map(m => `<li>${escapeHtml(m)}</li>`).join('')}
+        </ul>
+      </div>`;
+
+            // Teacher tips
+            html += `<div class="guide-teacher-tips">
+        <h4><span class="guide-icon">👨‍🏫</span> 講師向け指導アドバイス</h4>
+        <ul class="guide-tips-list">
+          ${ans.guide.teacherTips.map(t => `<li>${escapeHtml(t)}</li>`).join('')}
+        </ul>
+      </div>`;
+
+            html += `</div>`; // .guide-section end
+        });
+
+        return html;
     }
 
     function escapeHtml(text) {

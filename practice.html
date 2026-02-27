@@ -240,6 +240,269 @@
             margin-bottom: 16px;
         }
 
+        /* ===== Guide & Model Answer Styles ===== */
+        .guide-theme-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-lg);
+            padding: 24px 32px;
+            margin-bottom: 28px;
+            color: #fff;
+        }
+
+        .guide-theme-category {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .guide-theme-icon {
+            font-size: 1.3rem;
+        }
+
+        .guide-theme-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .guide-keyword {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .guide-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-section-header {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--accent-lavender);
+        }
+
+        .guide-section-header h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+
+        .guide-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .guide-type-badge {
+            background: var(--accent-lavender);
+            color: #fff;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .guide-char-badge {
+            background: var(--accent-mint);
+            color: #1a5c3a;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .guide-model-answer {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid #86efac;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .guide-model-answer h4 {
+            font-size: 1rem;
+            color: #166534;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-answer-text {
+            font-size: 0.93rem;
+            line-height: 1.95;
+            color: #1a1a1a;
+            text-indent: 1em;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+        }
+
+        .guide-icon {
+            font-size: 1.1rem;
+        }
+
+        /* 4 Steps */
+        .guide-steps-container {
+            margin-bottom: 24px;
+        }
+
+        .guide-steps-title {
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+            color: var(--accent-dark);
+        }
+
+        .guide-step {
+            border-left: 4px solid #7C6BC4;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            background: rgba(124, 107, 196, 0.04);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            transition: background 0.2s;
+        }
+
+        .guide-step:hover {
+            background: rgba(124, 107, 196, 0.08);
+        }
+
+        .guide-step-header {
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .guide-step-icon {
+            font-size: 1.1rem;
+        }
+
+        .guide-step-points {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .guide-step-points li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .guide-step-points li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: inherit;
+            opacity: 0.5;
+        }
+
+        /* Mistakes */
+        .guide-mistakes {
+            background: linear-gradient(135deg, #fef2f2 0%, #fff5f5 100%);
+            border: 1px solid #fecaca;
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .guide-mistakes h4 {
+            color: #dc2626;
+            font-size: 0.98rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-mistake-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .guide-mistake-list li {
+            padding: 6px 0 6px 22px;
+            position: relative;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #7f1d1d;
+        }
+
+        .guide-mistake-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        /* Teacher tips */
+        .guide-teacher-tips {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+            border: 1px solid #93c5fd;
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+        }
+
+        .guide-teacher-tips h4 {
+            color: #1e40af;
+            font-size: 0.98rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .guide-tips-list li {
+            padding: 6px 0 6px 22px;
+            position: relative;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: #1e3a5f;
+        }
+
+        .guide-tips-list li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Guide button */
+        .btn--guide {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+        }
+
+        .btn--guide:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn--guide:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
         /* Print styles */
         @media print {
             body {
@@ -272,7 +535,9 @@
             .exam-body,
             .exam-questions,
             .answer-area,
-            .case-study-box {
+            .case-study-box,
+            .guide-section,
+            .guide-theme-banner {
                 box-shadow: none !important;
                 border-radius: 0 !important;
                 margin-bottom: 16px;
@@ -312,6 +577,20 @@
             .exam-body,
             .exam-questions {
                 page-break-inside: auto;
+            }
+
+            .guide-section {
+                page-break-inside: avoid;
+            }
+
+            .guide-theme-banner {
+                background: #333 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .guide-model-answer {
+                border: 2px solid #000;
             }
 
             a {
@@ -367,6 +646,7 @@
             </div>
             <div class="btn-group no-print fade-in">
                 <button class="btn btn--primary" id="btnDisplay" disabled>📖 問題を表示</button>
+                <button class="btn btn--guide" id="btnShowGuide" disabled>📚 模範解答・指導マニュアル</button>
                 <button class="btn btn--secondary" id="btnPrint" disabled>🖨️ PDF / 印刷</button>
                 <button class="btn btn--secondary" id="btnPrintWithAnswer" disabled>📝 解答欄付きで印刷</button>
             </div>
@@ -392,7 +672,7 @@
     </footer>
 
     <script src="data/exams.js"></script>
-    <script src="data/exams2.js"></script>
+    <script src="data/answers.js"></script>
     <script src="js/main.js"></script>
     <script src="js/practice.js"></script>
 </body>
